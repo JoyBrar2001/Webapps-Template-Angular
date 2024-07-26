@@ -1,61 +1,76 @@
-<div class="survey-page">
-  <!-- Survey Content -->
-  <div class="main-content">
-    <div class="image-container">
-      <img src="Welcome Screen Poster.png" alt="Survey Image" />
+<div *ngIf="loading" class="loader-container">
+  <app-loader></app-loader>
+</div>
+
+<div *ngIf="!loading" class="container">
+  <header class="header">
+    <div class="banner">
+      <img
+        src="Welcome Screen Poster.png"
+        alt="Survey Image"
+        class="banner-img"
+      />
     </div>
+  </header>
+
+  <main class="main">
     <!-- First Question -->
-    <div class="survey-container">
-      <div class="question-container">
-        <p class="question-text">
-          How much better do you understand Gemini now?
-        </p>
-        <div class="options-form">
-          <button
-            *ngFor="let value of [1, 2, 3, 4, 5]"
-            (click)="selectOption('understanding', value)"
-            [ngClass]="{
-              'option-selected': responses.understanding === value
-            }"
-            class="option-button"
-          >
-            {{ value }}
-          </button>
-        </div>
-      </div>
-
-      <!-- Second Question -->
-      <div class="question-container">
-        <p class="question-text">
-          How likely are you to recommend Gemini to customers now?
-        </p>
-        <div class="options-form">
-          <button
-            *ngFor="let value of [1, 2, 3, 4, 5]"
-            (click)="selectOption('recommendation', value)"
-            [ngClass]="{
-              'option-selected': responses.recommendation === value
-            }"
-            class="option-button"
-          >
-            {{ value }}
-          </button>
-        </div>
-      </div>
-
-      <!-- Submit Button -->
-      <div class="submit-container">
+    <div class="question-container">
+      <p class="question-p">On a scale 1-5</p>
+      <p class="question-p">How much better do you understand Gemini now?</p>
+      <div class="options-form">
         <button
-          (click)="submitSurvey()"
-          [disabled]="
-            responses.understanding === null ||
-            responses.recommendation === null
-          "
-          class="submit-button"
+          *ngFor="let value of [1, 2, 3, 4, 5]"
+          (click)="selectOption('understanding', value)"
+          [ngStyle]="{'background-color': getButtonColor(value)}"
+          [ngClass]="{
+            'option-selected': responses.understanding === value
+          }"
+          class="option-button"
         >
-          Submit
+          {{ value }}
         </button>
       </div>
+      <div class="options-label-container">
+        <p>Not at all</p>
+        <p>Extremely Well</p>
+      </div>
     </div>
-  </div>
+
+    <!-- Second Question -->
+    <div class="question-container">
+      <p class="question-p">On a scale 1-5</p>
+      <p class="question-p">
+        How likely are you to recommend Gemini to customers now?
+      </p>
+      <div class="options-form">
+        <button
+          *ngFor="let value of [1, 2, 3, 4, 5]"
+          (click)="selectOption('recommendation', value)"
+          [ngStyle]="{'background-color': getButtonColor(value)}"
+          [ngClass]="{
+            'option-selected': responses.recommendation === value
+          }"
+          class="option-button"
+        >
+          {{ value }}
+        </button>
+      </div>
+      <div class="options-label-container">
+        <p>Not at all</p>
+        <p>Extremely Well</p>
+      </div>
+    </div>
+
+    <!-- Submit Button -->
+    <div class="submit-button-container">
+      <button 
+        (click)="submitSurvey()"
+        class="submit-button"
+        [disabled]="!responses.understanding || !responses.recommendation"
+      >
+        Submit
+      </button>
+    </div>
+  </main>
 </div>
