@@ -1,0 +1,55 @@
+<div class="result-page-container">
+  <div *ngIf="!results || results.score === null" class="loader-container">
+    <app-loader></app-loader>
+  </div>
+  <div *ngIf="results && results.score !== null" class="result-page">
+    <div class="overlay"></div>
+
+    <div class="bottom-container">
+      <div class="header">
+        <div class="logo-container">
+          <img src="Google Logo.png" alt="Google" class="logo" />
+        </div>
+        <h2 class="title">Pixel Quiz</h2>
+      </div>
+
+      <div class="congrats">
+        <h1 class="congrats-title">Congratulations!</h1>
+        <p class="congrats-text">
+          You answered {{ results.score / 50 }} questions correctly, and
+          received {{ results.score }} points.
+        </p>
+      </div>
+
+      <div class="button-container">
+        <button class="back-button" (click)="handleClick()">
+          Back to Home
+          <i class="arrow-icon"></i>
+        </button>
+      </div>
+    </div>
+
+    <div class="image-container">
+      <img
+        src="rewardPage/lower right.png"
+        alt="lowerRight"
+        class="lowerRight"
+      />
+      <img
+        src="rewardPage/upper right.png"
+        alt="upperRight"
+        class="upperRight"
+      />
+      <img src="rewardPage/left.png" alt="left" class="left" />
+      <img src="rewardPage/yellow dot.png" alt="yellowDot" class="yellow-dot" />
+
+      <div className="coin-container">
+        <img src="rewardPage/coin.png" alt="coin" class="coin" />
+        <div class="score-container">
+          <img src="Google Logo.png" alt="Google" class="small-logo" />
+          <p class="score">{{ results.score }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

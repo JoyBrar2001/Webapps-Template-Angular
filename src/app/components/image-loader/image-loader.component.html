@@ -1,0 +1,6 @@
+<div class="image-loader-container">
+  <ng-container *ngIf="!loaded">
+    <div class="skeleton-placeholder"></div>
+  </ng-container>
+  <img *ngIf="loaded" [src]="src" [alt]="alt" class="image-loader-img" />
+</div>

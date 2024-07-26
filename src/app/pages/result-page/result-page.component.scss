@@ -1,0 +1,278 @@
+.result-page {
+  width: 100%;
+  font-family: "Google Sans", sans-serif;
+  min-height: 100vh;
+  position: relative;
+  background-color: #f1f5f9;
+}
+
+.overlay {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: black;
+  opacity: 0.3;
+  z-index: 10;
+}
+
+.bottom-container {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 50;
+  background-color: white;
+  padding: 16px;
+  padding-top: 16px;
+  border-radius: 24px 24px 0 0;
+}
+
+.header {
+  width: 100%;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo-container {
+  border: 1px solid;
+  padding: 6px;
+  border-radius: 50%;
+}
+
+.logo {
+  width: 28px;
+  height: 28px;
+}
+
+.title {
+  font-weight: 500;
+  font-size: 1.25rem;
+}
+
+.congrats {
+  margin-top: 16px;
+}
+
+.congrats-title {
+  font-size: 2rem;
+  font-weight: 500;
+}
+
+.congrats-text {
+  font-size: 0.875rem;
+  font-weight: 500;
+  margin-top: 4px;
+}
+
+.button-container {
+  margin: 40px 0;
+}
+
+.back-button {
+  background-color: #4285f4;
+  color: white;
+  font-weight: 500;
+  padding: 12px 20px;
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+.image-container {
+  height: 240px;
+  width: 240px;
+  @media (min-width: 640px) {
+    height: 288px;
+    width: 288px;
+  }
+  @media (min-width: 768px) {
+    height: 384px;
+    width: 384px;
+  }
+  background-color: white;
+  border-radius: 48px;
+  position: absolute;
+  top: 15%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 50;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+}
+
+.lowerRight {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  object-fit: cover;
+  right: 0;
+  bottom: 0;
+  animation: goBottomRight 2.5s forwards;
+  z-index: 40;
+}
+
+.upperRight {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  object-fit: cover;
+  top: 0;
+  right: 0;
+  animation: goTopLeft 2.5s forwards;
+  z-index: 40;
+}
+
+.left {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  object-fit: cover;
+  inset: 0;
+  animation: goLeft 2.5s forwards ease-out;
+  z-index: 40;
+}
+
+.yellowDot {
+  position: absolute;
+  width: 64px;
+  height: 64px;
+  right: 10%;
+  top: 50%;
+  z-index: 40;
+  animation: fadeOut 2.5s forwards ease-out;
+}
+
+.yellow-dot {
+  position: absolute;
+  object-fit: cover;
+  height: 4rem;
+  width: 4rem;
+  right: 10%;
+  top: 50%;
+  z-index: 40;
+  animation: fadeOut 1s forwards ease-out;
+}
+
+.coin-container {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: popup 2.5s forwards ease-out;
+}
+
+.coin {
+  height: 160px;
+  width: 160px;
+  @media (min-width: 768px) {
+    height: 192px;
+    width: 192px;
+  }
+  @media (min-width: 1024px) {
+    height: 256px;
+    width: 256px;
+  }
+  z-index: 10;
+}
+
+.score-container {
+  position: absolute;
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  bottom: 15%;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 4px 8px;
+  border: 2px solid;
+  border-radius: 9999px;
+  z-index: 10;
+  font-size: 10px;
+}
+
+.small-logo {
+  height: 16px;
+  width: 16px;
+}
+
+.score {
+  font-size: 1.125rem;
+  @media (min-width: 1024px) {
+    font-size: 2rem;
+  }
+  font-weight: bold;
+}
+
+@keyframes goBottomRight {
+  0% {
+    transform: translate(0px, 0px);
+  }
+  100% {
+    transform: translate(100%, 100%);
+  }
+}
+
+@keyframes goTopLeft {
+  0% {
+    transform: translate(0px, 0px);
+  }
+  100% {
+    transform: translate(100%, -100%);
+  }
+}
+
+@keyframes goLeft {
+  0% {
+    transform: translate(0px, 0px);
+  }
+  100% {
+    transform: translate(-100%, 0px);
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 100%;
+  }
+  100% {
+    opacity: 0%;
+  }
+}
+
+@keyframes popup {
+  0% {
+    transform: translateY(100%);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+@keyframes confetti {
+  0% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}

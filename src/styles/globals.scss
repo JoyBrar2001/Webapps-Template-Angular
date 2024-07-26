@@ -13,53 +13,6 @@ $google-blue-900: #153977;
 
 body {
   font-family: 'GoogleSans', sans-serif;
-  background-color: $google-blue-50;
-  color: $google-blue-900;
   margin: 0;
   padding: 0;
-  line-height: 1.6;
-}
-
-h1, h2, h3, h4, h5, h6 {
-  margin: 0 0 10px 0;
-  font-weight: bold;
-}
-
-h1 {
-  font-size: 2rem;
-  color: $google-blue-500;
-}
-
-h2 {
-  font-size: 1.75rem;
-  color: $google-blue-600;
-}
-
-p {
-  margin: 0 0 15px 0;
-}
-
-a {
-  color: $google-blue-700;
-  text-decoration: none;
-  transition: all 0.6s ease-in-out;
-
-  &:hover {
-    color: $google-blue-900;
-  }
-}
-
-button {
-  background-color: $google-blue-500;
-  color: #fff;
-  border: none;
-  padding: 10px 20px;
-  font-size: 1rem;
-  cursor: pointer;
-  border-radius: 5px;
-  transition: all 0.2s ease-in-out;
-
-  &:hover {
-    background-color: $google-blue-600;
-  }
 }

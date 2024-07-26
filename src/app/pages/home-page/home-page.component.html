@@ -1,0 +1,50 @@
+<div *ngIf="loading; else content">
+  <app-loader></app-loader>
+</div>
+
+<ng-template #content>
+  <div class="container">
+    <header class="header">
+      <div class="banner">
+        <img src="Welcome Screen Poster.png" alt="Welcome" class="banner-img" />
+      </div>
+    </header>
+    <main class="main">
+      <div class="text-center">
+        <img src="Google Logo.png" alt="" class="logo" />
+        <h2 class="subtitle">Welcome to</h2>
+        <h1 class="title">The Gemini Quiz</h1>
+        <p class="description">
+          Join the NBA playoffs with the RSAs and put your Pixel AI knowledge to
+          use. You can attempt this quiz multiple times with the RSAs in store
+        </p>
+      </div>
+      <form class="row full-center">
+        <mat-form-field class="example-full-width">
+          <mat-label>Select Store</mat-label>
+          <input matInput [formControl]="storeControl" [matAutocomplete]="auto" />
+          <mat-autocomplete autoActiveFirstOption #auto>
+            <mat-option *ngFor="let store of allStores" [value]="store">
+              {{ store }}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+      </form>
+
+      <div class="button-container text-center">
+        <p class="instructions">
+          • Attempt this quiz on your Pixel Tablet only. <br />
+          • You will get 35 seconds to answer each question. <br />
+          • Each question awards 50 points.
+        </p>
+        <button
+          [disabled]="!selectedStore"
+          (click)="startPlaying()"
+          class="start-button"
+        >
+          Start Playing
+        </button>
+      </div>
+    </main>
+  </div>
+</ng-template>

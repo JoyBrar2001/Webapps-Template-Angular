@@ -1,0 +1,191 @@
+.quiz-page {
+  width: 100%;
+  font-family: 'Google Sans', sans-serif;
+  min-height: 100vh;
+  background-color: #f1f5f9;
+
+  .main-content {
+    width: 100%;
+    height: 100%;
+    min-height: 100vh;
+    max-width: 1440px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .quiz-container {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      margin-top: 0.5rem;
+      width: 100%;
+      justify-content: center;
+      align-items: center;
+
+      @media (min-width: 1280px) {
+        flex-direction: row;
+      }
+
+      .timer-container {
+        position: relative;
+        width: 100%;
+
+        @media (min-width: 1280px) {
+          width: 50%;
+        }
+
+        .timer-image img {
+          max-width: 100%;
+          aspect-ratio: 16/9;
+          border-radius: 0.5rem;
+        }
+
+        .timer-display {
+          position: absolute;
+          top: 0;
+          left: 50%;
+          transform: translateX(-50%) translateY(-50%);
+          background-color: white;
+          border-radius: 9999px;
+          padding: 1rem;
+          text-align: center;
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+          .timer-text {
+            font-size: 1.5rem;
+            font-weight: bold;
+          }
+        }
+      }
+
+      .question-container {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        margin-top: 1rem;
+
+        @media (min-width: 1280px) {
+          width: 50%;
+          margin-top: 0;
+        }
+
+        .question-header {
+          display: flex;
+          justify-content: space-between;
+          font-weight: 500;
+          color: #64748b;
+
+          .question-number,
+          .question-points {
+            font-size: 0.875rem;
+
+            @media (min-width: 1280px) {
+              font-size: 1rem;
+            }
+          }
+        }
+
+        .question-text {
+          font-weight: 600;
+          text-align: center;
+          margin: 0.5rem 0;
+          font-size: 1rem;
+
+          @media (min-width: 1280px) {
+            font-size: 1.125rem;
+          }
+        }
+
+        .options-form {
+          display: flex;
+          flex-direction: column;
+          gap: 0.625rem;
+          justify-content: start;
+          align-items: start;
+          width: 100%;
+
+          .option-button {
+            width: 100%;
+            display: flex;
+            justify-content: start;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1rem;
+            border: 2px solid transparent;
+            transition: all 0.3s;
+            border-radius: 0.5rem;
+            background: transparent;
+            cursor: pointer;
+
+            &.option-selected {
+              border-color: #fbbf24;
+              background: linear-gradient(180deg, #fef3c7, #fef3c7, transparent);
+            }
+
+            &.option-correct {
+              border-color: #10b981;
+              background: linear-gradient(180deg, #d1fae5, #d1fae5, transparent);
+            }
+
+            &.option-wrong {
+              border-color: #ef4444;
+              background: linear-gradient(180deg, #fee2e2, #fee2e2, transparent);
+            }
+
+            .option-number {
+              font-weight: bold;
+              font-size: 1rem;
+
+              @media (min-width: 1280px) {
+                font-size: 1.125rem;
+              }
+            }
+
+            .option-text {
+              text-align: left;
+              font-size: 1rem;
+
+              @media (min-width: 1280px) {
+                font-size: 1.125rem;
+              }
+            }
+          }
+        }
+
+        .submit-container {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          gap: 0.5rem;
+          width: 100%;
+          margin-bottom: 1.5rem;
+
+          .submit-button {
+            background-color: #4285f4;
+            color: white;
+            padding: 0.625rem 1.25rem;
+            border-radius: 9999px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-top: 0.5rem;
+            transition: background-color 0.3s, box-shadow 0.3s;
+            font-size: 1rem;
+
+            &:disabled {
+              background-color: #93c5fd;
+            }
+
+            @media (min-width: 1280px) {
+              font-size: 1.125rem;
+            }
+          }
+        }
+      }
+    }
+  }
+}

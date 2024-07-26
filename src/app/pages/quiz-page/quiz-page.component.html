@@ -1,0 +1,59 @@
+<div class="quiz-page">
+  <div *ngIf="loading" class="loader-container">
+    <app-loader></app-loader>
+  </div>
+
+  <!-- Timer and Question Display -->
+  <div *ngIf="!loading" class="main-content">
+    <div class="quiz-container">
+      <div class="timer-container">
+        <div class="timer-image">
+          <app-image-loader [src]="quizData[currentQuestionIndex].imageUrl" alt="Image description"></app-image-loader>
+        </div>
+        <div class="timer-display">
+          <p class="timer-text">00:{{ remainingTime.toString().padStart(2, '0') }}</p>
+        </div>
+      </div>
+
+      <!-- Quiz Content -->
+      <div class="question-container">
+        <div class="question-header">
+          <p class="question-number">
+            {{ currentQuestionIndex + 1 }}/{{ quizData.length }}
+          </p>
+          <p class="question-points">(50 Points)</p>
+        </div>
+
+        <p class="question-text">{{ quizData[currentQuestionIndex].question }}</p>
+
+        <form class="options-form">
+          <button
+            *ngFor="let option of quizData[currentQuestionIndex]?.options; let i = index"
+            type="button"
+            [ngClass]="{
+              'option-selected': selectedOptionIndex === i && !hasAnswered,
+              'option-correct': hasAnswered && i === correctAnswerIndex,
+              'option-wrong': hasAnswered && selectedOptionIndex === i && selectedOptionIndex !== correctAnswerIndex
+            }"
+            (click)="handleOptionClick(i)"
+            [disabled]="hasAnswered"
+            class="option-button"
+          >
+            <p class="option-number">{{ i + 1 }}.</p>
+            <p class="option-text">{{ option }}</p>
+          </button>
+        </form>
+
+        <div class="submit-container">
+          <button
+            (click)="handleQuestionSubmit(selectedOptionIndex)"
+            [disabled]="selectedOptionIndex === null || hasAnswered"
+            class="submit-button"
+          >
+            Submit
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
