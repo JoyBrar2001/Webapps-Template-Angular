@@ -11,14 +11,14 @@ export const routes: Routes = [
   },
   {
     path: "quiz",
-    component: QuizPageComponent,
+    loadComponent: () => import('./pages/quiz-page/quiz-page.component').then((m) => m.QuizPageComponent),
   },
   {
     path: "survey",
-    component: SurveyPageComponent,
+    loadComponent: () => import('./pages/survey-page/survey-page.component').then((m) => m.SurveyPageComponent),
   },
   {
     path: "result",
-    component: ResultPageComponent,
+    loadComponent: () => import('./pages/result-page/result-page.component').then((m) => m.ResultPageComponent),
   },
 ];

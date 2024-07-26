@@ -11,7 +11,7 @@ import { QuizService } from '../../services/quiz.service';
   imports: [
     CommonModule,
     LoaderComponent
-],
+  ],
   templateUrl: './survey-page.component.html',
   styleUrls: ['./survey-page.component.scss']
 })
@@ -22,6 +22,7 @@ export class SurveyPageComponent implements OnInit {
   answers: (number | null)[] = [];
 
   loading: boolean = true;
+  results: number = 0;
 
   responses = {
     understanding: null as number | null,
@@ -45,7 +46,7 @@ export class SurveyPageComponent implements OnInit {
       feedback2: this.responses.recommendation,
     }
     console.log(payload);
-    
+
     this.feedbackService.postFeedback(payload).subscribe(
       response => {
         console.log('Results submitted successfully:', response);
@@ -55,7 +56,11 @@ export class SurveyPageComponent implements OnInit {
       }
     );
 
-    this.router.navigate(['/result']);
+    this.router.navigate(['/result'], {
+      queryParams: {
+        results: this.results,
+      }
+    });
   }
 
   getButtonColor(value: number): string {
@@ -83,7 +88,7 @@ export class SurveyPageComponent implements OnInit {
       user: this.answers,
       store_name: this.storeName,
     });
-    
+
 
     this.quizService.postResults({
       contest_id: this.contestId,
@@ -92,12 +97,13 @@ export class SurveyPageComponent implements OnInit {
       store_name: this.storeName,
     }).subscribe(
       response => {
+        this.results = response;
         console.log('Results submitted successfully:', response);
       },
       error => {
         console.error('Error submitting results:', error);
       }
-    );;
+    );
 
     this.loading = false;
   }

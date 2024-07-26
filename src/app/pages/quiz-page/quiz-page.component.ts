@@ -41,7 +41,7 @@ export class QuizPageComponent implements OnInit, OnDestroy {
   timerSubscription: Subscription | null = null;
   answers: (number | null)[] = [];
 
-  loading: boolean = true;
+  // loading: boolean = true;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -62,11 +62,11 @@ export class QuizPageComponent implements OnInit, OnDestroy {
         this.quizData = data;
         this.answers = new Array(data.length).fill(null);
         this.loadQuestion(this.currentQuestionIndex);
-        this.loading = false;
+        // this.loading = false;
       },
       error => {
         console.error('Failed to load quiz questions', error);
-        this.loading = false;
+        // this.loading = false;
       }
     );
   }

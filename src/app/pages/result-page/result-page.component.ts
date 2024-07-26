@@ -30,39 +30,46 @@ export class ResultPageComponent implements OnInit {
   constructor(private route: ActivatedRoute, private quizService: QuizService) { }
 
   ngOnInit(): void {
+    // this.route.queryParams.subscribe(params => {
+    //   if (params) {
+    //     this.answers = JSON.parse(params['answers']);
+    //     this.territoryId = params['territory_id'];
+    //     this.contestId = params['contest_id'];
+    //     this.storeName = params['store_name'];
+    //   }
+
+    //   this.submitResults();
+    //   this.toggleConfetti();
+    // });
     this.route.queryParams.subscribe(params => {
-      if (params) {
-        this.answers = JSON.parse(params['answers']);
-        this.territoryId = params['territory_id'];
-        this.contestId = params['contest_id'];
-        this.storeName = params['store_name'];
+      if(params){
+        this.results = params['results']
+        console.log(this.results);
+        
       }
-
-      this.submitResults();
-      this.toggleConfetti();
-    });
+    })
   }
 
-  submitResults(): void {
-    const resultsPayload = {
-      contest_id: this.contestId.toString(),
-      territory_id: this.territoryId,
-      user: this.answers,
-      store_name: this.storeName,
-    };
+  // submitResults(): void {
+  //   const resultsPayload = {
+  //     contest_id: this.contestId.toString(),
+  //     territory_id: this.territoryId,
+  //     user: this.answers,
+  //     store_name: this.storeName,
+  //   };
 
-    console.log('Submitting results payload:', resultsPayload);
+  //   console.log('Submitting results payload:', resultsPayload);
     
-    this.quizService.postResults(resultsPayload).subscribe(
-      response => {
-        this.results = response;
-        console.log('Results submitted successfully:', response);
-      },
-      error => {
-        console.error('Error submitting results:', error);
-      }
-    );
-  }
+  //   this.quizService.postResults(resultsPayload).subscribe(
+  //     response => {
+  //       this.results = response;
+  //       console.log('Results submitted successfully:', response);
+  //     },
+  //     error => {
+  //       console.error('Error submitting results:', error);
+  //     }
+  //   );
+  // }
 
   toggleConfetti(): void {
     setTimeout(() => {
